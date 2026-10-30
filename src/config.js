@@ -28,7 +28,7 @@ const DEFAULT_CONFIG = {
   PLAY_IMMEDIATELY: true,
 
   // Do not pause games when the page loses focus
-  PAUSE_ON_BLUR: true,
+  PAUSE_ON_BLUR: false,
 
   // Debugging around drawn hands requires
   // being able to force a draw

@@ -1,0 +1,147 @@
+/* Peranakan theme overlay for the mahjong game.
+   Loaded last so it wins the cascade over the game's default palette.
+   Maps the game's base colors to the app palette AND applies the
+   Peranakan background images as CSS defaults. */
+
+:root {
+  /* App palette primitives (copied from the main app's theme.css) */
+  --app-vermilion: #b32222;
+  --app-vermilion-dark: #861818;
+  --app-rosewood: #4a2e26;
+  --app-antique-gold: #d4af37;
+  --app-warm-ivory: #f7ead9;
+  --app-peranakan-teal: #2c9c8d;
+  --app-blush-pink: #e7a7b3;
+  --app-text: #2a211d;
+  --app-surface: #fffaf0;
+  --app-scanner-bg: #1a1210;
+  --app-error: #9f1f1f;
+  --app-success: #187154;
+
+  /* Remap game base colors — these are the tokens that colors.css
+     chains all its semantic variables through, so overriding them
+     here re-colors the entire game to match the app palette. */
+  --green: var(--app-vermilion-dark);
+  --dark-green: var(--app-rosewood);
+  --purple: var(--app-rosewood);
+  --transparent-purple: rgba(74, 46, 38, 0.67);
+  --indigo: var(--app-rosewood);
+  --gold: var(--app-antique-gold);
+  --yolk: var(--app-blush-pink);
+  --cream: var(--app-warm-ivory);
+  --chiffon: var(--app-surface);
+  --lime: var(--app-success);
+  --transparent-olive: rgba(26, 18, 16, 0.67);
+  --denim: var(--app-peranakan-teal);
+  --blue: var(--app-peranakan-teal);
+  --dark-blue: var(--app-rosewood);
+  --red: var(--app-vermilion);
+  --fuschia: var(--app-blush-pink);
+  --black: var(--app-scanner-bg);
+  --off-black: var(--app-text);
+  --transparent-black: rgba(26, 18, 16, 0.4);
+  --ochre: var(--app-rosewood);
+  --gray: #7a6b5c;
+  --silver: #c9bbaa;
+  --medium-gray: #ddd3c2;
+  --light-gray: #eee5d2;
+  --almost-white: var(--app-surface);
+  --white: var(--app-surface);
+  --schoolbus: var(--app-antique-gold);
+
+  /* Page and board — dark around the board so the iframe blends with
+     the main app's dark scanner background */
+  --html-background: var(--app-scanner-bg);
+  --page-background: var(--app-scanner-bg);
+  --board-background: var(--app-vermilion-dark);
+  --board-text-color: var(--app-antique-gold);
+  --board-secondary-text-color: var(--app-warm-ivory);
+
+  /* Discard table and player banks */
+  --discard-background: var(--app-rosewood);
+  --discard-pause-text-color: var(--app-surface);
+  --discard-pause-text-shadow: var(--app-scanner-bg);
+
+  --player-background: var(--app-warm-ivory);
+  --player-text-color: var(--app-rosewood);
+  --player-text-shadow: var(--app-scanner-bg);
+  --player-id-shadow: var(--app-scanner-bg);
+  --player-id-background: var(--app-vermilion);
+  --player-score-background: var(--app-vermilion-dark);
+
+  --player-active: var(--app-peranakan-teal);
+  --player-waiting: var(--app-blush-pink);
+  --player-winner: var(--app-antique-gold);
+  --player-game-winner: var(--app-antique-gold);
+
+  /* Tiles and highlights */
+  --tile-border: var(--app-rosewood);
+  --tile-background: var(--app-surface);
+  --tile-suggestion: var(--app-peranakan-teal);
+  --tile-suggestion-highlight: var(--app-blush-pink);
+  --tile-discard: var(--app-antique-gold);
+  --tile-concealed: var(--app-vermilion-dark);
+  --tile-bonus: var(--app-vermilion);
+  --tile-winning: var(--app-success);
+  --tile-latest: var(--app-success);
+  --tile-highlight: var(--app-success);
+  --tile-selectable: var(--app-peranakan-teal);
+
+  /* Windicator */
+  --windicator-color: var(--app-antique-gold);
+  --windicator-border: var(--app-antique-gold);
+  --windicator-background: var(--app-rosewood);
+  --windicator-outline: var(--app-scanner-bg);
+  --windicator-done: var(--app-surface);
+  --windicator-shadow: var(--app-scanner-bg);
+  --windicator-player-wind: var(--app-antique-gold);
+  --windicator-player-wind-background: var(--app-vermilion);
+  --windicator-player-wind-border: var(--app-antique-gold);
+  --windicator-wotr-background: var(--app-vermilion-dark);
+  --windicator-wotr-border: var(--app-antique-gold);
+  --windicator-wotr-shadow: var(--app-scanner-bg);
+
+  /* Modal */
+  --modal-overlay: rgba(26, 18, 16, 0.7);
+  --modal-panel-background: var(--app-surface);
+  --modal-panel-border: var(--app-antique-gold);
+  --modal-close: var(--app-rosewood);
+  --modal-button-border: var(--app-antique-gold);
+  --modal-button-background: var(--app-warm-ivory);
+  --modal-customized: var(--app-vermilion);
+
+  /* Score tables */
+  --table-outer: var(--app-rosewood);
+  --table-separator: var(--app-antique-gold);
+  --table-alternate: var(--app-warm-ivory);
+  --scores-details: var(--app-peranakan-teal);
+  --scores-east: var(--app-blush-pink);
+
+  /* Announcement bubbles */
+  --announcement-outline: var(--app-antique-gold);
+}
+
+/* ---------- Background images as CSS defaults ---------- */
+
+/* Brocade pattern behind the discarded tiles (the "table" area) */
+.discards {
+  background-image: url("../../img/background/red-brocade-bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Paper texture on the sidebar */
+.sidebar {
+  background-image: url("../../img/background/paper-bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Restrained body sizing on narrow screens — the default CSS uses an
+   absolute 800px width which zooms out on mobile. Cap it to viewport. */
+@media (max-width: 820px) {
+  body {
+    width: auto;
+    padding: 8px 4px;
+  }
+}

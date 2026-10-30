@@ -5,3 +5,5 @@ docs/*.log
 docs/*.synctex.gz
 docs/*.pdf
 run.bat
+
+.phase-runner/
