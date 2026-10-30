@@ -139,6 +139,10 @@ h2 a:hover:before {
 
   body {
     padding: 4px 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: 1fr auto;
   }
 
   :root:root {
@@ -152,8 +156,15 @@ h2 a:hover:before {
   main.board {
     width: var(--w);
     height: var(--h);
-    margin: 0 auto;
+    margin: auto;
     overflow: hidden;
+    grid-row: 1;
+  }
+
+  footer {
+    grid-row: 2;
+    padding: 8px 0 12px;
+    font-size: 0.7rem;
   }
 
   /* Hide the tile-knowledge sidebar on mobile.
