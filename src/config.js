@@ -25,7 +25,7 @@ const DEFAULT_CONFIG = {
   // This determines whether you get asked to
   // choose normal vs. automated play when you
   // load the page.
-  PLAY_IMMEDIATELY: false,
+  PLAY_IMMEDIATELY: true,
 
   // Do not pause games when the page loses focus
   PAUSE_ON_BLUR: true,
@@ -109,7 +109,7 @@ let currentConfig = Object.assign(fromStorage, DEFAULT_CONFIG);
 // runtime overrides?
 let queryArgs = globalThis.location.search.replace(
   /([a-z_]+)=/g,
-  (a, b) => b.toUpperCase() + "="
+  (a, b) => b.toUpperCase() + "=",
 );
 
 let params = new URLSearchParams(queryArgs);
@@ -122,7 +122,6 @@ for (const [key, value] of Object.entries(currentConfig)) {
   if (value === "false") currentConfig[key] = false;
   if (value == parseFloat(value)) currentConfig[key] = parseFloat(value); // note: == rather than ===
 }
-
 
 console.log("playing with", currentConfig);
 
@@ -365,7 +364,7 @@ const config = Object.assign(
       return diff;
     },
   },
-  currentConfig
+  currentConfig,
 );
 
 // bind console.debug correctly.
@@ -374,4 +373,4 @@ config.set({ DEBUG: currentConfig.DEBUG });
 config.log = playlog.log;
 config.flushLog = playlog.flush;
 
-export { config, CLAIM,  Constants, TILE_NAMES, TILE_GLYPHS, SUIT_NAMES };
+export { config, CLAIM, Constants, TILE_NAMES, TILE_GLYPHS, SUIT_NAMES };

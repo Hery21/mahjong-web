@@ -8,3 +8,27 @@
 @import url("./players.css");
 @import url("./tracking.css");
 @import url("./animations.css");
+.how-to-play-toggle {
+  background: none;
+  border: none;
+  color: #a08060;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  font: inherit;
+}
+
+.how-to-play-toggle:hover {
+  color: #f0e6d2;
+}
+
+.dot {
+  opacity: 0.5;
+  margin: 0 0.4em;
+}
+
+#how-to-play-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1em 4em;
+}
