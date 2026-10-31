@@ -10,3 +10,15 @@
 **Remaining risks:** If wrapper is present but wraps wrong sections (e.g. only #explanation), toggle will reveal only that part. Verify by clicking How to play and confirming all sections appear. If some sections remain visible, tell me — we'll adjust the wrapper boundaries.
 **Decisions made:** Grid body with align-content: center keeps header+board+footer centered when instructions hidden, and shifts them up when instructions open (instructions added as natural row). Board shrinks via media query on short desktop viewports so header+footer+instructions fit without scroll. Added :root:root specificity trick to override board.css's --w: 45em on short viewports.
 **Next part:** Tile spritesheet generation.
+
+## Style — Peranakan webp tiles and header layout
+
+**Status:** Complete. Manual verification pending.
+**Goal:** Use the new renamed_webp tiles. Add header above the board. Ensure header is at top, board centered, footer + toggleable instructions at bottom.
+**Files changed:** src/css/tiles.css (paths changed from small/*.jpg to renamed_webp/*.webp, concealed.jpg kept as fallback since concealed.webp missing from new set), img/tiles/default-tileset.png renamed to .disabled (stops old spritesheet from overriding tiles.css via runtime-injected style), index.html (added Google Fonts, mahjong-header block, display:none inline on wrapper, toggle script), src/css/index.css (imports peranakan-theme.css and peranakan-layout.css after existing imports), src/css/peranakan-layout.css (new: header + toggle styling, body flex-column layout, board margin:auto for vertical centering, footer + instructions styling with !important to beat base game CSS, :root:root override for --w to prevent overflow, mobile media query).
+**User-visible result:** New Peranakan tiles render (0-41 from renamed_webp; concealed from small/ for opponent hidden tiles). Header at top with eyebrow+title+subtitle. Board centered vertically. Footer cream, gold links. Clicking How to play reveals scrollable instructions container with cream text.
+**Automated checks:** 3 verification steps confirm tiles.css, index.html, layout.css all patched.
+**Manual checks:** Pending. (1) Desktop hard reload. Verify: header top, board center, footer bottom, no black text on instructions, tiles are Peranakan not Chinese. (2) Click How to play. Instructions open scrollable, readable. (3) Click again. Instructions close. (4) Mobile hard reload. Same structure, no overflow.
+**Not checked:** Production deploy. Real mobile device.
+**Remaining risks:** default-tileset.png.disabled — if TileSetManager.loadDefault still injects style from this file path, might fail to load (good) or throw (bad). Verified against code that promise rejection = no injection. If concealed.webp was added later, run the script again — it will swap to webp. If localStorage has mahjongTileset saved, that custom tileset wins and user must clear it in the theme panel.
+**Next part:** Deploy to Vercel.
