@@ -11,11 +11,7 @@ function setStyleSheet(id, css) {
 }
 
 class TileSetManager {
-  static loadDefault() {
-    this.createTileSetCSS(`./img/tiles/default-tileset.png`).then((css) =>
-      setStyleSheet(`default-tiles`, css)
-    );
-  }
+  static loadDefault() { /* disabled to allow tiles.css override */ }
 
   static createTileSetCSS(dataURL) {
     return new Promise((resolve) => {

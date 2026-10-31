@@ -61,7 +61,7 @@ game-tile + [tile] {
   margin-left: 1px;
 }
 
-[tile="-1"] { content: "unknown"; background-image: url("../../img/tiles/small/concealed.jpg"); box-shadow: -1px -1px 1px 0 inset #0d450e; }
+[tile="-1"] { content: "unknown"; background-image: url("../../img/tiles/renamed_webp/concealed.webp"); box-shadow: -1px -1px 1px 0 inset #0d450e; }
 
 [tile="0"] { content: "bamboo-1"; background-image: url("../../img/tiles/renamed_webp/0.webp");}
 [tile="1"] { content: "bamboo-2"; background-image: url("../../img/tiles/renamed_webp/1.webp");}
