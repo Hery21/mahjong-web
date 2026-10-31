@@ -33,3 +33,14 @@
 **Manual checks:** Pending. (1) Desktop hard reload. Tiles should have no white background. Board should fill screen. Felt pattern visible on the table. (2) Mobile hard reload. Same scaling. (3) Open How to play. (4) Tiles should look correct.
 **Remaining risks:** The board width uses 94vw which might overflow vertically if the browser calculates viewport height weirdly on mobile (address bar). We use calc(100vh - 220px) to guard this. If the board overflows top or bottom, we will lower the height multiplier.
 **Next part:** Deploy to Vercel.
+
+## Style — Fix tile background, windicator scaling, footer overlap
+
+**Status:** Complete. Manual verification pending.
+**Goal:** Remove the white box behind the new tiles, fix the windicator so it stays centered on zoom, and add bottom padding to clear the main app's QR dock.
+**Files changed:** src/css/peranakan-theme.css (--tile-background changed to transparent), src/css/peranakan-layout.css (re-added body/html background to ensure full coverage, updated windicator internal variables to calc(var(--w)), added 80px bottom padding to body).
+**User-visible result:** Transparent Peranakan tiles. The central windicator diamond scales proportionally with the board. The red background fills the entire iframe. The footer and "How to play" link sit safely above the QR count at the bottom.
+**Automated checks:** Checked theme CSS.
+**Manual checks:** Pending. (1) Hard reload. Tiles should be transparent. (2) Windicator should look correct and scale on zoom. (3) Background should reach the bottom. (4) Footer should not overlap.
+**Remaining risks:** The main app's QR dock height is fixed but the iframe padding uses a static 80px. If the QR dock grows, we might need to adjust the 80px value.
+**Next part:** Deploy to Vercel.
