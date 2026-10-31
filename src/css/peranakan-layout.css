@@ -1,18 +1,24 @@
-/* Ensure background images are applied correctly */
-body {
+/* Full height background */
+html, body {
+  background-color: #861818 !important; /* Fallback */
   background-image: url('../../img/background/red-brocade-bg.webp') !important;
   background-size: cover !important;
   background-position: center !important;
   background-attachment: fixed !important;
   margin: 0;
-  padding: 16px;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 100vh;
-  min-height: 100dvh;
   box-sizing: border-box;
+  /* 80px clears the main app's QR progress dock */
+  padding: 16px 16px 80px 16px;
 }
 
 .discards {
@@ -57,8 +63,7 @@ body {
 
 /* Scaling the board and fixing absolute positioned assets */
 :root:root {
-  /* Make board fill width, leave room for header/footer */
-  --w: min(94vw, calc(100vh - 220px)) !important;
+  --w: min(94vw, calc(100vh - 250px)) !important;
   --h: var(--w) !important;
   --ph: calc(var(--w) / 11.25) !important;
   --sep: 1px !important;
@@ -68,11 +73,18 @@ body {
 main.board {
   margin: auto 0 !important;
   flex: 0 0 auto !important;
+  background-color: transparent !important;
 }
 
-/* Fix windicator (diamond in center) to scale with board */
+/* Force tile transparency (in case theme CSS didn't catch it) */
+[tile], game-tile {
+  background-color: transparent !important;
+  border-color: rgba(74, 46, 38, 0.5) !important;
+}
+
+/* Fix windicator (diamond) to scale with board width */
 .windicator {
-  --wi: calc(var(--w) / 35) !important;
+  --wi: calc(var(--w) / 30) !important;
   --wotr-dim: calc(var(--w) / 4.5) !important;
   --inner-dim: calc(var(--wotr-dim) / 6) !important;
   --offset: calc(0em - (var(--wotr-dim) * 0.8)) !important;
@@ -92,7 +104,6 @@ main.board {
   bottom: calc(var(--ph) * 1.2) !important;
 }
 
-/* Specific corner alignments */
 .board .corner.wall.data {
   right: calc(var(--w) / 9) !important;
   top: calc(var(--ph) * 1.2) !important;
@@ -156,9 +167,9 @@ body > footer a {
     display: none !important;
   }
   :root:root {
-    --w: min(98vw, calc(100vh - 200px)) !important;
+    --w: min(98vw, calc(100vh - 260px)) !important;
   }
   body {
-    padding: 8px;
+    padding: 8px 8px 80px 8px;
   }
 }

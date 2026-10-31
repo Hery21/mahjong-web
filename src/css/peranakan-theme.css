@@ -76,7 +76,7 @@
 
   /* Tiles and highlights */
   --tile-border: var(--app-rosewood);
-  --tile-background: var(--app-surface);
+  --tile-background: transparent !important;
   --tile-suggestion: var(--app-peranakan-teal);
   --tile-suggestion-highlight: var(--app-blush-pink);
   --tile-discard: var(--app-antique-gold);
