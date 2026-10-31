@@ -22,3 +22,14 @@
 **Not checked:** Production deploy. Real mobile device.
 **Remaining risks:** default-tileset.png.disabled — if TileSetManager.loadDefault still injects style from this file path, might fail to load (good) or throw (bad). Verified against code that promise rejection = no injection. If concealed.webp was added later, run the script again — it will swap to webp. If localStorage has mahjongTileset saved, that custom tileset wins and user must clear it in the theme panel.
 **Next part:** Deploy to Vercel.
+
+## Style — Scale board and fix assets
+
+**Status:** Complete. Manual verification pending.
+**Goal:** Remove the white box from WebP tiles, scale board to fill screen width, fix positioning of windicator and corner texts, and apply the felt and brocade backgrounds.
+**Files changed:** src/css/tiles.css (removed background-color to make tiles transparent), src/css/peranakan-layout.css (body background to red-brocade, .discards background to felt.png, board width increased to 94vw/98vw, windicator and corner font sizes made relative to board width).
+**User-visible result:** The board is much larger. The felt table texture is visible behind the tiles, and the body has the brocade pattern. Transparent Peranakan tiles sit directly on the felt. The center windicator (diamond shape) and side texts (settings, theme) are scaled correctly to match the bigger board.
+**Automated checks:** CSS check verifies tiles are transparent.
+**Manual checks:** Pending. (1) Desktop hard reload. Tiles should have no white background. Board should fill screen. Felt pattern visible on the table. (2) Mobile hard reload. Same scaling. (3) Open How to play. (4) Tiles should look correct.
+**Remaining risks:** The board width uses 94vw which might overflow vertically if the browser calculates viewport height weirdly on mobile (address bar). We use calc(100vh - 220px) to guard this. If the board overflows top or bottom, we will lower the height multiplier.
+**Next part:** Deploy to Vercel.
