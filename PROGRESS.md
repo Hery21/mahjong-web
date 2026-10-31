@@ -44,3 +44,10 @@
 **Manual checks:** Pending. (1) Hard reload. Tiles should be transparent. (2) Windicator should look correct and scale on zoom. (3) Background should reach the bottom. (4) Footer should not overlap.
 **Remaining risks:** The main app's QR dock height is fixed but the iframe padding uses a static 80px. If the QR dock grows, we might need to adjust the 80px value.
 **Next part:** Deploy to Vercel.
+
+## Fix — Load renamed_webp tiles correctly
+
+**Status:** Complete.
+**Goal:** Point tiles.css to the new .webp assets, bypass the default-tileset.png loading to avoid EPERM, and force transparency.
+**Files changed:** src/css/tiles.css (regex replace to renamed_webp), src/js/page/utils.js (loadDefault disabled), src/css/peranakan-layout.css (transparent rule).
+**Next part:** Verify on device and deploy.
